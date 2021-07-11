@@ -1,0 +1,9 @@
+version: '3.0'
+
+services:
+    teste:
+        privileged: true
+        build: .
+        volumes: 
+            - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        command: sh teste.sh
