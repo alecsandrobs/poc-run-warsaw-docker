@@ -96,6 +96,16 @@ dpkg -i warsaw_setup_64.deb
 dpkg -l warsaw
 ```
 
+O resultado seria algo tipo:
+```
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version      Architecture Description
++++-==============-============-============-========================================================================
+ii  warsaw         1.15.3-17    amd64        Package warsaw provides the needed software to use some banking services
+```
+
 **verifica o status do warsaw**
 ```
 service warsaw status
@@ -103,4 +113,20 @@ service warsaw status
 ou
 ```
 systemctl status warsaw
+```
+
+Deveria exibir algo parecido com:
+```
+* warsaw.service - Warsaw Desktop
+     Loaded: loaded (/lib/systemd/system/warsaw.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sun 2021-07-11 18:59:22 UTC; 1min 20s ago
+   Main PID: 6378 (core)
+      Tasks: 13 (limit: 9337)
+     Memory: 7.4M
+     CGroup: /system.slice/containerd.service/system.slice/warsaw.service
+             `-6378 /usr/local/bin/warsaw/core
+
+Jul 11 18:59:22 80baeb206370 systemd[1]: Starting Warsaw Desktop...
+Jul 11 18:59:22 80baeb206370 systemd[1]: warsaw.service: Supervising process 6378 which is not our child. We'll most likely not notice when it exits.
+Jul 11 18:59:22 80baeb206370 systemd[1]: Started Warsaw Desktop.
 ```
